@@ -2,3 +2,4 @@
 fildes:FLAG_1
 nasty-rules:FLAG_WRONG_ONE
 you-should-read-manual:FLAG_2
+random-pass-auth:FLAG 6
