@@ -11,7 +11,7 @@ Run example
 ===========
 
 ```
-$ python example/0656081 example/ans
+$ python score.py example/0656081 example/ans
 0656081: 40
 0656082: 40
 ```
@@ -20,5 +20,5 @@ Run your file
 =============
 
 ```
-$ python yourfile example/ans
+$ python score.py yourfile example/ans
 ```
