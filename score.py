@@ -9,8 +9,10 @@ FlagPoints = namedtuple('FlagPoints', ['flag', 'points'])
 
 
 def get(f):
-    return map(lambda x: list(map(lambda x: x.strip(), x.strip().split(
-        ':'))), filter(lambda x: x.strip(), f.readlines()))
+    return map(
+        lambda x: list(map(lambda x: x.strip(), x.strip().split(':'))),
+        filter(lambda x: x.strip(), f.readlines()),
+    )
 
 
 def check_input_filename(filename):
