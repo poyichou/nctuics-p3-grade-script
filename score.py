@@ -21,6 +21,14 @@ def check_input_filename(filename):
         raise ValueError('Your file include extension')
 
 
+def check_student_ids(student_ids):
+    for student in student_ids:
+        if not student:
+            raise ValueError('Empty student id')
+        if len(student) < 3:
+            raise ValueError('Student id too short (< 3)')
+
+
 def main():
     if len(sys.argv) != 3:
         print('usage: score.py [input] [answer]')
@@ -34,6 +42,8 @@ def main():
     with open(input_fn) as f:
         student_ids = next(f).strip().split(',')
         input_lines = get(f)
+
+    check_student_ids(student_ids)
 
     with open(answer_fn) as f:
         lines = get(f)
