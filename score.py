@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 from collections import namedtuple
 
@@ -12,6 +13,14 @@ def get(f):
         ':'))), filter(lambda x: x.strip(), f.readlines()))
 
 
+def check_input_filename(filename):
+    filename = os.path.basename(filename)
+    if not filename:
+        raise ValueError('You did not provide filename')
+    if len(filename.split('.')) != 1:
+        raise ValueError('Your file include extension')
+
+
 def main():
     if len(sys.argv) != 3:
         print('usage: score.py [input] [answer]')
@@ -19,6 +28,8 @@ def main():
 
     input_fn = sys.argv[1]
     answer_fn = sys.argv[2]
+
+    check_input_filename(input_fn)
 
     with open(input_fn) as f:
         student_ids = next(f).strip().split(',')
