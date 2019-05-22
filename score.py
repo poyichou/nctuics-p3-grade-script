@@ -9,10 +9,10 @@ FlagPoints = namedtuple('FlagPoints', ['flag', 'points'])
 
 
 def get(f):
-    return map(
+    return list(map(
         lambda x: list(map(lambda x: x.strip(), x.strip().split(':'))),
         filter(lambda x: x.strip(), f.readlines()),
-    )
+    ))
 
 
 def check_input_filename(filename):
@@ -31,6 +31,12 @@ def check_student_ids(student_ids):
             raise ValueError('Student id too short (< 3)')
 
 
+def check_key_is_unique(v):
+    k = [i[0] for i in v]
+    if len(k) != len(set(k)):
+        raise KeyError('Duplicate key')
+
+
 def main():
     if len(sys.argv) != 3:
         print('usage: score.py [input] [answer]')
@@ -46,6 +52,7 @@ def main():
         input_lines = get(f)
 
     check_student_ids(student_ids)
+    check_key_is_unique(input_lines)
 
     with open(answer_fn) as f:
         lines = get(f)
