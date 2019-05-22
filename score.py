@@ -38,14 +38,7 @@ def check_key_is_unique(v):
         raise KeyError('Duplicate key')
 
 
-def main():
-    if len(sys.argv) != 3:
-        print('usage: score.py [input] [answer]')
-        exit(1)
-
-    input_fn = sys.argv[1]
-    answer_fn = sys.argv[2]
-
+def main(input_fn: str, answer_fns: list):
     check_input_filename(input_fn)
 
     with open(input_fn) as f:
@@ -55,18 +48,21 @@ def main():
     check_student_ids(student_ids)
     check_key_is_unique(input_lines)
 
-    with open(answer_fn) as f:
-        lines = get(f)
-        answer = {k: FlagPoints(v, int(s)) for k, v, s in lines}
+    answers = []
+    for ans_fn in answer_fns:
+        with open(ans_fn) as f:
+            lines = get(f)
+            answers.append({k: FlagPoints(v, int(s)) for k, v, s in lines})
 
     score = 0
     for k, v in input_lines:
-        if answer[k].flag == v:
-            score += answer[k].points
+        for ans in answers:
+            if ans[k].flag == v:
+                score += ans[k].points
 
     for student in student_ids:
         print(f'{student}: {score}')
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1], sys.argv[2:])
