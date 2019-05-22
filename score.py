@@ -5,12 +5,13 @@ import sys
 from collections import namedtuple
 
 
+DELIMITER = '|'
 FlagPoints = namedtuple('FlagPoints', ['flag', 'points'])
 
 
 def get(f):
     return list(map(
-        lambda x: list(map(lambda x: x.strip(), x.strip().split(':'))),
+        lambda x: list(map(lambda x: x.strip(), x.strip().split(DELIMITER))),
         filter(lambda x: x.strip(), f.readlines()),
     ))
 
