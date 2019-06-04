@@ -20,7 +20,7 @@ def main():
         try:
             m(fi, args.answer)
         except Exception as e:
-            print('bang', e)
+            print(f'bang: {fi}', e)
 
 
 if __name__ == '__main__':
