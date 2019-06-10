@@ -6,7 +6,7 @@ from collections import namedtuple
 
 
 DELIMITER = '|'
-FlagPoints = namedtuple('FlagPoints', ['flag', 'points'])
+FlagPoints = namedtuple('FlagPoints', ['index', 'flag', 'points'])
 
 
 def get(f):
@@ -49,19 +49,24 @@ def main(input_fn: str, answer_fns: list):
     check_key_is_unique(input_lines)
 
     answers = []
+    total_answers = 0
     for ans_fn in answer_fns:
         with open(ans_fn) as f:
             lines = get(f)
-            answers.append({k: FlagPoints(v, int(s)) for k, v, s in lines})
+            total_answers = len(lines)
+            answers.append({k: FlagPoints(
+                i, v, int(s)) for i, (k, v, s) in enumerate(lines)})
 
     score = 0
+    correct = ['0'] * total_answers
     for k, v in input_lines:
         for ans in answers:
             if ans[k].flag == v:
                 score += ans[k].points
+                correct[ans[k].index] = '1'
 
     for student in student_ids:
-        print(f'{student}: {score}')
+        print(f'{student}, {score}, {", ".join(correct)}')
 
 
 if __name__ == '__main__':

@@ -60,8 +60,8 @@ def test_multiple_ansfile(fs, capsys):
 
     main('/i1', ['/a1', '/a2'])
     captured = capsys.readouterr()
-    assert captured.out == '0650000: 50\n'
+    assert captured.out == '0650000, 50, 1, 1\n'
 
     main('/i2', ['/a1', '/a2'])
     captured = capsys.readouterr()
-    assert captured.out == '0650000: 50\n'
+    assert captured.out == '0650000, 50, 1, 1\n'
