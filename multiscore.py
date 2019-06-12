@@ -20,7 +20,8 @@ def main():
         try:
             m(fi, args.answer)
         except Exception as e:
-            print(f'bang: {fi}', e)
+            pk = fi.split('/')[-2].split()[0]
+            print(f'{pk}, 0, {e}')
 
 
 if __name__ == '__main__':
