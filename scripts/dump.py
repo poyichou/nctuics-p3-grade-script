@@ -48,6 +48,8 @@ async def main(username, password):
             files = glob.glob('%s/*/*' % (ext_dir))
             ans = ['../ans1', '../ans2']
             multiscore.get_parser = Foo(files, ans)
+
+            print(f'Total submission: {len(files)}')
             multiscore.main()
 
 
