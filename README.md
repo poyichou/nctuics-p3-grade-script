@@ -1,4 +1,4 @@
-NCTU ICS Project 3 Grade Script
+NCTU ICS Project 4 Grade Script
 ===============================
 
 Requirement
@@ -12,8 +12,7 @@ Run example
 
 ```
 $ python score.py example/0656081 example/ans
-0656081: 40
-0656082: 40
+0656081: 50
 ```
 
 Run your file

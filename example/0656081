@@ -1,5 +1,5 @@
-0656081,0656082
+0656081
 fildes|FLAG_1
 nasty-rules|FLAG_WRONG_ONE
 you-should-read-manual|FLAG_2
-random-pass-auth|FLAG 6
+ret-shellcode|FLAG 6
