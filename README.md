@@ -21,3 +21,7 @@ Run your file
 ```
 $ python score.py yourfile example/ans
 ```
+
+Submission format
+=============
+refer the problem name in example/ans, write your submission file in format of example/0656081, and change flag content.
